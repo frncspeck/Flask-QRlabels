@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Print labels{% endblock %}
+
+{% block content %}
+<div class="container">
+<br />
+<ul>
+  <li><a href="{{ url_for('qrl_blueprint.qrpath',qrpath='') }}">Use this link and add path to generate custom QR</a></li>
+  <li><a href="{{ url_for('qrl_blueprint.qrprint',qrpath='') }}">Use this link and add path to generate custom QR label</a></li>
+  {% for prefix_key in redirect_paths %}
+  <li><a href="{{ url_for('qrl_blueprint.qrprints', prefix_key=prefix_key) }}">
+    Use this link for 2x2 random {{ prefix_key }} labels
+  </a></li>
+  {% endfor %}
+</ul>
+
+</div>
+{% endblock %}

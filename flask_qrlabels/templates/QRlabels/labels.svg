@@ -1,0 +1,20 @@
+<svg width="100%" height="auto" viewBox="0 0 210 297">
+  {% for row in range(rows) %}
+    {% set x_pos = 210*row/rows %}
+    {% set row_height = 100/rows %}
+    {% for col in range(cols) %}
+      {% set y_pos = 297*col/cols %}
+      {% set col_width = 100/cols %}
+      {% set qr = image_hrefs[row][col] %}
+      {% set width = col_width %}
+      {% set height = row_height %} 
+        <rect width="{{ col_width }}%" height="{{ row_height }}%" x="{{ x_pos }}" y="{{ y_pos }}"
+          {#style="fill:rgb(0,170,0);#}
+          stroke-width:1;
+          stroke:rgb(0,0,0)" />
+        <g>{% include 'QRlabels/label.svg' %}</g>
+       {#  <image width="{{ col_width }}%" height="{{ row_height }}%" x="{{ x_pos }}" y="{{ y_pos }}"
+          href="{{ image_hrefs[row][col] }}" /> #}
+    {% endfor %}
+  {% endfor %}
+</svg> 
